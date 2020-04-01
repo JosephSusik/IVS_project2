@@ -1,0 +1,10 @@
+#EditorConfig file
+root = true
+
+[*]
+max_line_length = 100
+indent_style = tab
+tab_width = 4
+end_of_line = lf  #unix style
+trim_trailing_whitespace = true
+insert_final_newline = true
