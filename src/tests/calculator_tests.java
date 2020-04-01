@@ -1,227 +1,247 @@
-package Calculator_test;
+package com.calculator_tests;
 
-//potrebne knihovny
-
+//libraries
+import com.math_library.math;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
+import static java.lang.Math.E;
 import static org.junit.jupiter.api.Assertions.*;
+import static com.math_library.math.*;
 
-//trida, zacatek testu
+
+//class, beginning of tests
 public class calculator_tests{
 
-    //je potreba vytvorit staticky virtualni objekt
-    private static final Math math = new Math();
-    
-    //test na funkcnost scitani
+    //static virtual object created
+    //private static final Math mathematics = new Math();
+
+    private static final double DELTA = 1e-5;
+
+    //addition tests
     @Test
-    public void Scitani_test(){
+    public void Adding_tests(){
         
-        //tyto testy by se mely rovnat
-        assertTrue(0 == math.Scitani(0, 0));
-        assertTrue(0 == math.Scitani(-1, 1));
-        assertTrue(10 == math.Scitani(10, 0));
-        assertTrue(-30 == math.Scitani(-20, -10));
-        assertTrue(-1 == math.Scitani(12, -13));
-        assertTrue(200000 == math.Scitani(100000, 100000));
-        assertTrue(10 == math.Scitani(4.25, 5.75));
-        assertTrue(-2.2345 == math.Scitani(-1.4986, -0.7359));
+        //assert equal
+        assertEquals(0, adding(0, 0));
+        assertEquals(0, adding(-1, 1));
+        assertEquals(10, adding(10, 0));
+        assertEquals(-30, adding(-20, -10));
+        assertEquals(-1, adding(12, -13));
+        assertEquals(200000, adding(100000, 100000));
+        assertEquals(10, adding(4.25, 5.75));
+        assertEquals(-2.2345, adding(-1.4986, -0.7359), DELTA);
 
-        //tyto testy by se nemely rovnat
-        assertFalse(0 == math.Scitani(2, 3));
-        assertFalse(-2 == math.Scitani(-2, -2));
-        assertFalse(1000000 == math.Scitani(100000, 100000));
-        assertFalse(-2.5 == math.Scitani(-1.5, 2));
-        assertFalse(123 == math.Scitani(123, 1));
-        assertFalse(3.4598 == math.Scitani(3.125, 5.649));
+        //assert not equal
+        assertNotEquals(-2, adding(-2, -2));
+        assertNotEquals(1000000, adding(100000, 100000));
+        assertNotEquals(-2.5, adding(-1.5, 2));
+        assertNotEquals(123, adding(123, 1));
+        assertNotEquals(3.4598, adding(3.125, 5.649));
     }
 
-    //test na funkcnost odcitani
+    //subtraction tests
     @Test
-    public void Odcitani_test(){
+    public void Subtraction_tests(){
 
-        //tyto testy by se mely rovnat
-        assertTrue(0 == math.Odcitani(0, 0));
-        assertTrue(0 == math.Odcitani(2, 2));
-        assertTrue(-10 == math.Odcitani(-45, -35));
-        assertTrue(30 == math.Odcitani(20, -10));
-        assertTrue(-9000 == math.Odcitani(1000, 10000));
-        assertTrue(0 == math.Odcitani(10000, 10000));
-        assertTrue(4.06 == math.Odcitani(8.23, 4.17));
-        assertTrue(-16.2221 == math.Odcitani(-10.2345, -5.9876));
+        //assert equal
+        assertEquals(0, subtraction(0, 0));
+        assertEquals(0, subtraction(2, 2));
+        assertEquals(-10, subtraction(-45, -35));
+        assertEquals(30, subtraction(20, -10));
+        assertEquals(-9000, subtraction(1000, 10000));
+        assertEquals(0, subtraction(10000, 10000));
+        assertEquals(4.06, subtraction(8.23, 4.17), DELTA);
+        assertEquals(-4.2469, subtraction(-10.2345, -5.9876), DELTA);
 
-        //tyto testy by se nemely rovnat
-        assertFalse(0 == math.Odcitani(2, 3));
-        assertFalse(-2 == math.Odcitani(-2, -2));
-        assertFalse(1000000 == math.Odcitani(100000, 100000));
-        assertFalse(-2.5 == math.Odcitani(-1.5, 2));
-        assertFalse(123 == math.Odcitani(123, 1));
-        assertFalse(3.4598 == math.Odcitani(3.125, 5.649));
+        //assert not equal
+        Assertions.assertNotEquals(0, subtraction(2, 3));
+        Assertions.assertNotEquals(-2, subtraction(-2, -2));
+        Assertions.assertNotEquals(1000000, subtraction(100000, 100000));
+        Assertions.assertNotEquals(-2.5, subtraction(-1.5, 2), DELTA);
+        Assertions.assertNotEquals(123, subtraction(123, 1));
+        Assertions.assertNotEquals(3.4598, subtraction(3.125, 5.649), DELTA);
     }
 
-    //test na funkcnost nasobeni
+    //multiplication tests
     @Test
-    public void Nasobeni_test(){
+    public void Multiplication_tests(){
         
-        //tyto testy by se mely rovnat
-        assertTrue(0 == math.Nasobeni(0, 0));
-        assertTrue(6 == math.Nasobeni(2, 3));
-        assertTrue(-40 == math.Nasobeni(-10, 4));
-        assertTrue(200 == math.Nasobeni(-20, -10));
-        assertTrue(-13104 == math.Nasobeni(-84, 156));
-        assertTrue(0 == math.Nasobeni(100000, 0));
-        assertTrue(19.6875 == math.Nasobeni(2.25, 8.75));
-        assertTrue(-3.86508 == math.Nasobeni(-12.468, 0.31));
+        //assert equal
+        assertEquals(0, multiplication(0, 0));
+        assertEquals(6, multiplication(2, 3));
+        assertEquals(-40, multiplication(-10, 4));
+        assertEquals(200, multiplication(-20, -10));
+        assertEquals(-13104, multiplication(-84, 156));
+        assertEquals(0, multiplication(100000, 0));
+        assertEquals(19.6875, multiplication(2.25, 8.75), DELTA);
+        assertEquals(-3.86508, multiplication(-12.468, 0.31), DELTA);
 
-        //tyto testy by se nemely rovnat
-        assertFalse(1000000 == math.Nasobeni(1000000, 0));
-        assertFalse(-2.5 == math.Nasobeni(-1.5, 2));
-        assertFalse(1 == math.Nasobeni(123, 1));
-        assertFalse(3.4598 == math.Nasobeni(3.125, 5.649));
+        //assert not equal
+        assertNotEquals(1000000, multiplication(1000000, 0));
+        assertNotEquals(-2.5, multiplication(-1.5, 2), DELTA);
+        assertNotEquals(1, multiplication(123, 1));
+        assertNotEquals(3.4598, multiplication(3.125, 5.649), DELTA);
 
     }
 
-    //test na funkcnost deleni
+    //division tests
     @Test
-    public void Deleni_test() {
-        
-        //tyto testy ocekavaji string vystup ,,ERROR,, po zavolani funkce s temito vstupnimi parametry
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        PrintStream originalOut = System.out;
-        System.setOut(new PrintStream(outContent));
-        math.Deleni(5, 0);
-        assertEquals("ERROR", outContent.toString());
-        System.setOut(originalOut);
+    public void Division_tests() throws IllegalOptionException {
 
-        //tyto testy by se mely rovnat
-        assertTrue(0 == math.Deleni(0, 5));
-        assertTrue(1 == math.Deleni(3, 3));
-        assertTrue(-2 == math.Deleni(-8, 4));
-        assertTrue(2 == math.Deleni(-20, -10));
-        assertTrue(-0.8 == math.Deleni(-100, 125));
-        assertTrue(21.25 == math.Deleni(4.25, 0.2));
-        assertTrue(-8.5 == math.Deleni(2.25, -8.75));
+        //assert exception thrown
+        IllegalOptionException thrown = assertThrows(
+                IllegalOptionException.class,
+                () -> division(5, 0));
 
-        //tyto testy by se nemely rovnat
-        assertFalse(1 == math.Deleni(2, 3));
-        assertFalse(-0.5 == math.Deleni(-100, 250));
-        assertFalse(21.2 == math.Deleni(4.25, 0.2));
-        assertFalse(12.56 == math.Deleni(2.25, -8.75));
+        //assert equal
+        assertEquals(0, division(0, 5));
+        assertEquals(1, division(3, 3));
+        assertEquals(-2, division(-8, 4));
+        assertEquals(2, division(-20, -10));
+        assertEquals(-0.8, division(-100, 125), DELTA);
+        assertEquals(21.25, division(4.25, 0.2), DELTA);
+        assertEquals(-0.25714, division(2.25, -8.75), DELTA);
+
+        //should not equal
+        assertNotEquals(1, division(2, 3));
+        assertNotEquals(-0.5, division(-100, 250), DELTA);
+        assertNotEquals(21.2, division(4.25, 0.2), DELTA);
+        assertNotEquals(12.56, division(2.25, -8.75), DELTA);
     }
 
-    //test na funkcnost mocniny
+    //factorial tests
     @Test
-    public void Mocnina_test() {
-        
-        //tyto testy ocekavaji string vystup ,,ERROR,, po zavolani funkce s temito vstupnimi parametry
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        PrintStream originalOut = System.out;
-        System.setOut(new PrintStream(outContent));
-        math.Mocnina(0, -1);
-        assertEquals("ERROR", outContent.toString());
-        System.setOut(originalOut);
+    public void Factorial_tests() throws IllegalOptionException {
 
-        System.setOut(new PrintStream(outContent));
-        math.Mocnina(0, -23);
-        assertEquals("ERROR", outContent.toString());
-        System.setOut(originalOut);
+        //assert exception thrown
+        IllegalOptionException thrown_0 = assertThrows(
+                IllegalOptionException.class,
+                () -> factorial(2.5));
 
-        System.setOut(new PrintStream(outContent));
-        math.Mocnina(0, 0);
-        assertEquals("ERROR", outContent.toString());
-        System.setOut(originalOut);
+        IllegalOptionException thrown_1 = assertThrows(
+                IllegalOptionException.class,
+               () -> factorial(-5));
 
-        //tyto testy by se mely rovnat
-        assertTrue(0 == math.Mocnina(0, 5));
-        assertTrue(16 == math.Mocnina(4, 2));
-        assertTrue(-4096 == math.Mocnina(-8, 4));
-        assertTrue(-8000 == math.Mocnina(-20, 3));
-        assertTrue(1 == math.Mocnina(459153, 0));
-        assertTrue(20.25 == math.Mocnina(4.5, 2));
+        //assert equal
+        assertEquals(1, factorial(0));
+        assertEquals(120, factorial(5));
+        assertEquals(3628800, factorial(10));
 
-        //tyto testy by se nemely rovnat
-        assertFalse(1 == math.Mocnina(0, 4));
-        assertFalse(8 == math.Mocnina(4, 2));
-        assertFalse(-1000 == math.Mocnina(-2, 4));
-        assertFalse(-80025 == math.Mocnina(-20, 3));
+        //should not equal
+        assertNotEquals(0, factorial(0));
+        assertNotEquals(0, factorial(1));
+        assertNotEquals(8, factorial(3));
     }
 
-    //test na funkcnost odmocniny
+
+    //power tests
     @Test
-    public void Odmocnina_test() {
-        
-        //tyto testy ocekavaji string vystup ,,ERROR,, po zavolani funkce s temito vstupnimi parametry
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        PrintStream originalOut = System.out;
-        System.setOut(new PrintStream(outContent));
-        math.Odmocnina(3, 0);
-        assertEquals("ERROR", outContent.toString());
-        System.setOut(originalOut);
+    public void Power_tests() throws IllegalOptionException {
 
-        System.setOut(new PrintStream(outContent));
-        math.Odmocnina(-12, 2);
-        assertEquals("ERROR", outContent.toString());
-        System.setOut(originalOut);
+        //assert exception thrown
+        IllegalOptionException thrown_0 = assertThrows(
+                IllegalOptionException.class,
+                () -> power(0, 0));
 
-        System.setOut(new PrintStream(outContent));
-        math.Odmocnina(-2, -5);
-        assertEquals("ERROR", outContent.toString());
-        System.setOut(originalOut);
+        IllegalOptionException thrown_1 = assertThrows(
+                IllegalOptionException.class,
+                () -> power(5, 0.5));
 
-        //tyto testy by se mely rovnat
-        assertTrue(2 == math.Odmocnina(8, 3));
-        assertTrue(2.25 == math.Odmocnina(11.390625, 3));
-        assertTrue(3 == math.Odmocnina(729, 6));
-        assertTrue(2 == math.Odmocnina(8192, 13));
+        IllegalOptionException thrown_2 = assertThrows(
+                IllegalOptionException.class,
+                () -> power(2.5, -4.89));
 
-        //tyto testy by se nemely rovnat
-        assertFalse(1 == math.Odmocnina(2, 4));
-        assertFalse(2 == math.Odmocnina(1, 2));
-        assertFalse(-1000 == math.Odmocnina(2000, 4));
-        assertFalse(20 == math.Odmocnina(20, 3));
+        IllegalOptionException thrown_3 = assertThrows(
+                IllegalOptionException.class,
+                () -> power(2, -3));
+
+        //assert equal
+        assertEquals(0, power(0, 5));
+        assertEquals(16, power(4, 2));
+        assertEquals(4096, power(-8, 4));
+        assertEquals(-8000, power(-20, 3));
+        assertEquals(1, power(459153, 0));
+        assertEquals(20.25, power(4.5, 2), DELTA);
+
+        //should not equal
+        assertNotEquals(1, power(0, 4), DELTA);
+        assertNotEquals(8, power(4, 2), DELTA);
+        assertNotEquals(-1000, power(-2, 4), DELTA);
+        assertNotEquals(-80025, power(-20, 3), DELTA);
     }
 
-    //test na funkcnost logaritmu
+    //root tests
     @Test
-    public void Logaritmus_test() {
-        
-        //tyto testy ocekavaji string vystup ,,ERROR,, po zavolani funkce s temito vstupnimi parametry
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        PrintStream originalOut = System.out;
-        System.setOut(new PrintStream(outContent));
-        math.Mocnina(4, -2);
-        assertEquals("ERROR", outContent.toString());
-        System.setOut(originalOut);
+    public void Root_tests() throws IllegalOptionException {
 
-        System.setOut(new PrintStream(outContent));
-        math.Mocnina(-10, 23);
-        assertEquals("ERROR", outContent.toString());
-        System.setOut(originalOut);
+        //assert exception thrown
+        IllegalOptionException thrown_0 = assertThrows(
+                IllegalOptionException.class,
+                () -> root(3, 0));
 
-        System.setOut(new PrintStream(outContent));
-        math.Mocnina(0, 5);
-        assertEquals("ERROR", outContent.toString());
-        System.setOut(originalOut);
+        IllegalOptionException thrown_1 = assertThrows(
+                IllegalOptionException.class,
+                () -> root(-16, 2));
 
-        System.setOut(new PrintStream(outContent));
-        math.Mocnina(4, 0);
-        assertEquals("ERROR", outContent.toString());
-        System.setOut(originalOut);
+        //assert equal
+        assertEquals(2, root(8, 3));
+        assertEquals(2.25, root(11.390625, 3));
+        assertEquals(3, root(729, 6));
+        assertEquals(2, root(8192, 13));
 
-        //tyto testy by se mely rovnat
-        assertTrue(5 == math.Mocnina(2, 32));
-        assertTrue(2 == math.Mocnina(4, 16));
-        assertTrue(3 == math.Mocnina(10, 1000));
-        assertTrue(3 == math.Mocnina(16, 4096));
-        assertTrue(1 == math.Mocnina(0.23, 0.23));
-
-        //tyto testy by se nemely rovnat
-        assertFalse(2 == math.Mocnina(4, 4));
-        assertFalse(8 == math.Mocnina(4, 2));
-        assertFalse(-1000 == math.Mocnina(-2, 4));
-        assertFalse(-20 == math.Mocnina(-20, 3));
+        //should not equal
+        assertNotEquals(1, root(2, 4), DELTA);
+        assertNotEquals(2, root(1, 2), DELTA);
+        assertNotEquals(-1000, root(2000, 4), DELTA);
+        assertNotEquals(20, root(20, 3), DELTA);
     }
 
+    //logarithm tests
+    @Test
+    public void Logarithm_tests() throws IllegalOptionException{
+
+        //assert exception thrown
+        IllegalOptionException thrown_0 = assertThrows(
+                IllegalOptionException.class,
+                () -> logarithm(0, 0));
+
+        IllegalOptionException thrown_1 = assertThrows(
+                IllegalOptionException.class,
+                () -> logarithm(-10, 10));
+
+        IllegalOptionException thrown_2 = assertThrows(
+                IllegalOptionException.class,
+                () -> logarithm(0, 10));
+
+        IllegalOptionException thrown_3 = assertThrows(
+                IllegalOptionException.class,
+                () -> logarithm(1, 10));
+
+        IllegalOptionException thrown_4 = assertThrows(
+                IllegalOptionException.class,
+                () -> logarithm(2, 0));
+
+        IllegalOptionException thrown_5 = assertThrows(
+                IllegalOptionException.class,
+                () -> logarithm(10, -2));
+
+        IllegalOptionException thrown_6 = assertThrows(
+                IllegalOptionException.class,
+                () -> logarithm(-1, -1));
+
+        //assert equal
+        assertEquals(0, logarithm(2, 1));
+        assertEquals(1, logarithm(4.5, 4.5));
+        assertEquals(2, logarithm(10, 100));
+        assertEquals(3, logarithm(16, 4096));
+        assertEquals(2, logarithm(E, 7.38909), DELTA);
+
+        //assert not equal
+        assertNotEquals(2, logarithm(4, 4));
+        assertNotEquals(8, logarithm(4, 2));
+        assertNotEquals(4, logarithm(2, 4));
+        assertNotEquals(2, logarithm(100, 10));
+        assertNotEquals(10, logarithm(1.01, 0.01));
+    }
 }
