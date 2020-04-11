@@ -1,44 +1,52 @@
-package com.mat_library;
+package gradle;
 
-import static com.math_library.math;
+import gradle.libs.Math;
+import java.util.*;
 
-
-public class stddev {
+public class Stddev {
 
     public static void main(String[] args) {
-        double[] numArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }; 		// nase nacitane cisla
-        double SD = calculateSD(numArray); 				// ulozenie nacitanej odchylky
+       
+	Vector<Double> vec_tor = new Vector<Double>();
 
-        System.out.format("Standard Deviation = %.6f", SD);
-    }
+	Scanner scanner = new Scanner(System.in);
 
-    public static double calculateSD(double numArray[])
-    {
-        double sum = 0.0, standardDeviation = 0.0;
+	while (scanner.hasNext()) {
 
-// pocet cisel, ktore nacitame z pola 
- 	int length = numArray.length;
+                        if (scanner.hasNextDouble()) {
 
-// Spocitame vsetky cisla z pola spolu
-        for(double num : numArray) {
-	    sum = adding(sum, num);
+                                vec_tor.add(scanner.nextDouble());
+                        }
         }
 
-// Hodnotu vsetkych cisiel dohomady vydelime poctom cisel a ulozime do premennej mean
-	double mean = division(sum, length);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Od kazdeho jedneho cisla z pola odratame mean, umocnime to na 2, spocitame vsetky umocnene cisla dohromady a ulozime to do premennej standarDeviation
-        for(double num: numArray) {
-	    double numMean = subtraction(num, mean);
-	    double mathPow = power(numMean, 2);
-	    standardDeviation = adding(standardDeviation, mathPow);
+        double sum = 0.0, standardDeviation = 0.0;
+
+// number of numbers in file 
+ 	int length = vec_tor.size(); 
+	
+// Adding all numbers together
+        for(double num : vec_tor) {
+	    sum = Math.adding(sum, num);
+	}
+
+// (sum/length)
+	double mean = Math.division(sum, length);
+
+// [(num[1]-mean)^2 + (num[2]-mean)^2 + ... + (num[lenth-1]-mean)^2] = x
+	for(double num: vec_tor) {
+	    double numMean = Math.subtraction(num, mean);
+	    double mathPow = Math.power(numMean, 2);
+	    standardDeviation = Math.adding(standardDeviation, mathPow);
 
 	}
 
-// hodnotu v premennej standarDeviation vydelime poctom cisel, ktore nam boli zadane -1, odmocnime a vratime vyslednu hodnotu
-  	int helpLength = subtraction(length-1);
-	double helpRoot = division(standardDeviation, helpLength);
-	return root(helpRoot, 2);      
+// √( x / (length-1) ) 
+	int helpLength = Math.subtraction(length,1);  
+	double helpRoot = Math.division(standardDeviation, helpLength);
+	double SD = Math.root(helpRoot, 2);      
 
+	System.out.format("Standard Deviation = %.6f", SD);
     }
 }
