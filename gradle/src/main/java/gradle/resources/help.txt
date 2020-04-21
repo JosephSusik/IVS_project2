@@ -32,4 +32,4 @@ Logarithm:
 
 Version 1.0
 Authors: xdudaj02, xputal00, xsuch17, xsusik00
-License: GPU
+License: GPL
