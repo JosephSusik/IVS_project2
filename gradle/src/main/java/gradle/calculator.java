@@ -2,9 +2,12 @@ package gradle;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
 
-import static gradle.libs.Math.*; //include math library
+import static gradle.help.*;
+import static gradle.libs.Math.*;
 
 class calculator {
 
@@ -23,7 +26,7 @@ class calculator {
 
         JFrame f = new JFrame("Le Calculator"); //Creating instance of JFrame, calculator window
         f.pack(); //pack
-        Image logo = Toolkit.getDefaultToolkit().getImage("./src/main/resources/logo.png"); //import logo
+        Image logo = Toolkit.getDefaultToolkit().getImage("./src/main/java/gradle/resources/logo.png"); //import logo
         f.setIconImage(logo); //set logo
 
         Font font1 = new Font("SansSerif", Font.BOLD, 40);
@@ -66,29 +69,31 @@ class calculator {
         JButton root = new JButton("root");
         JButton log = new JButton("log");
         JButton ce = new JButton("CE");
+        JButton help = new JButton("HELP");
 
         //Creating button layout
-        zero.setBounds(100,260,100,40);
-        one.setBounds(0,220,100,40);
-        two.setBounds(100,220,100,40);
-        three.setBounds(200,220,100,40);
-        four.setBounds(0,180,100,40);
-        five.setBounds(100,180,100,40);
-        six.setBounds(200,180,100,40);
-        seven.setBounds(0,140,100,40);
-        eight.setBounds(100,140,100,40);
-        nine.setBounds(200,140,100,40);
-        dot.setBounds(0,260,100,40);
-        add.setBounds(200,260,100,40);
-        sub.setBounds(300,260,100,40);
-        mul.setBounds(300,220,100,40);
-        div.setBounds(300,180,100,40);
-        factorial.setBounds(300,140,100,40);
-        log.setBounds(300,100,100,40);
-        power.setBounds(200,100,100,40);
+        one.setBounds(100,220,100,40);
+        two.setBounds(200,220,100,40);
+        three.setBounds(300,220,100,40);
+        four.setBounds(100,180,100,40);
+        five.setBounds(200,180,100,40);
+        six.setBounds(300,180,100,40);
+        seven.setBounds(100,140,100,40);
+        eight.setBounds(200,140,100,40);
+        nine.setBounds(300,140,100,40);
+        zero.setBounds(200,260,100,40);
+        dot.setBounds(300,260,100,40);
+        add.setBounds(0,260,100,40);
+        sub.setBounds(100,260,100,40);
+        mul.setBounds(0,220,100,40);
+        div.setBounds(0,180,100,40);
+        factorial.setBounds(0,140,100,40);
+        power.setBounds(0,100,100,40);
         root.setBounds(100,100,100,40);
-        ce.setBounds(0,100,100,40);
-        equal.setBounds(400,100,100,200);
+        log.setBounds(200,100,100,40);
+        ce.setBounds(300,100,100,40);
+        equal.setBounds(400,140,100,160);
+        help.setBounds(400, 100, 100, 40);
 
 
         //Adding buttons to JFrame
@@ -113,6 +118,7 @@ class calculator {
         f.add(log);
         f.add(ce);
         f.add(equal);
+        f.add(help);
 
 
         // Has to be down here, otherwise loading is too slow
@@ -424,6 +430,14 @@ class calculator {
             tf_2.setText("");
             mDot = false;
             mEq = false;
+        });
+
+        help.addActionListener(e -> {
+            try {
+                show_help();
+            } catch (IOException ignored) {
+                System.out.println("vole");
+            }
         });
 
 

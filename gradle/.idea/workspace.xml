@@ -12,6 +12,13 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectId" id="1ar0Qav9Gh5fhJXtbr3rOHH3yr2" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -26,6 +33,15 @@
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
+  <component name="RunManager">
+    <configuration name="Calculator" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="gradle.calculator" />
+      <module name="gradle.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -36,11 +52,37 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1587478389553</updated>
-      <workItem from="1587478392858" duration="423000" />
+      <workItem from="1587478392858" duration="15137000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="199" y="73" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587502534043">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="199" y="73" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1587502534043" />
+    <state x="474" y="202" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1587497821981">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="474" y="202" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.834@0.0.1536.834" timestamp="1587497821981" />
+    <state width="1493" height="199" key="GridCell.Tab.0.bottom" timestamp="1587512371783">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="199" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1587512371783" />
+    <state width="1493" height="199" key="GridCell.Tab.0.center" timestamp="1587512371783">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="199" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1587512371783" />
+    <state width="1493" height="199" key="GridCell.Tab.0.left" timestamp="1587512371783">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="199" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1587512371783" />
+    <state width="1493" height="199" key="GridCell.Tab.0.right" timestamp="1587512371783">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="199" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1587512371783" />
   </component>
 </project>

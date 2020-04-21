@@ -1,0 +1,35 @@
+CALCULATOR HELP
+
+Application calculates and displays result of one mathematical operation. 
+Type numbers by clicking on application number buttons. Application supports decimal integer or non 
+integer numbers. Type non integer numbers by using "." button. Type negative numbers by clicking on 
+"-" before typing the number. Choose mathematical operation by clicking on one of operation buttons. 
+Display result by clicking on "=" button. Click on "CE" button to delete everything. Click on "HELP" 
+button to display help. Exit application by clicking "X" button in top right corner.
+
+AVAILABLE OPERATIONS
+Adding:
+    -> type first opperand, choose "+", type second opperand and click "="
+Subtitution:
+    -> type first opperand, choose "-", type second opperand and click "="
+Multiplication:
+    -> type first opperand, choose "*", type second opperand and click "="
+Division:
+    -> type first opperand, choose "/", type second opperand and click "="
+    -> possible error: cant divide with zero
+Factorial:
+    -> type first opperand, choose "!" and click "="
+    -> possible errors: number must a positive integer
+Power:
+    -> type first opperand (base), choose "pow", type second opperand (power) and click "="
+    -> possible errors: opperands cant be zero, opperand two must be a positive integer
+Root:
+    -> type first opperand (base), choose "root", type second opperand (root number) and click "="
+    -> possible errors: root cant be zero, if root number is even - base cant be negative
+Logarithm:
+    -> type first opperand (base), choose "log", type second opperand (log number) and click "="
+    -> possible errors: base cant be smaller than one, logarithm number must be positive
+
+Version 1.0
+Authors: xdudaj02, xputal00, xsuch17, xsusik00
+License: GPU
