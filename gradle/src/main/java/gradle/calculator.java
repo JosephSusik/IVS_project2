@@ -432,6 +432,7 @@ class calculator {
             mEq = false;
         });
 
+        //  HELP
         help.addActionListener(e -> {
             try {
                 show_help();
