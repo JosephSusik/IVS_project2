@@ -12,6 +12,13 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -33,7 +40,7 @@
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.tests">
     <configuration name="Calculator" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="gradle.calculator" />
       <module name="gradle.main" />
@@ -41,6 +48,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="tests" type="JUnit" factoryName="JUnit">
+      <module name="gradle.test" />
+      <useClassPathOnly />
+      <option name="PACKAGE_NAME" value="gradle" />
+      <option name="MAIN_CLASS_NAME" value="gradle.tests" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Calculator" />
+      <item itemvalue="JUnit.tests" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -52,7 +75,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1587478389553</updated>
-      <workItem from="1587478392858" duration="15137000" />
+      <workItem from="1587478392858" duration="17988000" />
     </task>
     <servers />
   </component>
@@ -60,29 +83,33 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="199" y="73" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587502534043">
+    <state x="199" y="73" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587515483987">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="199" y="73" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1587502534043" />
-    <state x="474" y="202" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1587497821981">
+    <state x="199" y="73" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1587515483987" />
+    <state x="474" y="202" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1587515482603">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="474" y="202" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.834@0.0.1536.834" timestamp="1587497821981" />
-    <state width="1493" height="199" key="GridCell.Tab.0.bottom" timestamp="1587512371783">
+    <state x="474" y="202" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.834@0.0.1536.834" timestamp="1587515482603" />
+    <state x="549" y="172" key="FileChooserDialogImpl" timestamp="1587514247670">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="199" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1587512371783" />
-    <state width="1493" height="199" key="GridCell.Tab.0.center" timestamp="1587512371783">
+    <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1587514247670" />
+    <state width="1493" height="199" key="GridCell.Tab.0.bottom" timestamp="1587515526102">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="199" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1587512371783" />
-    <state width="1493" height="199" key="GridCell.Tab.0.left" timestamp="1587512371783">
+    <state width="1493" height="199" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1587515526102" />
+    <state width="1493" height="199" key="GridCell.Tab.0.center" timestamp="1587515526102">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="199" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1587512371783" />
-    <state width="1493" height="199" key="GridCell.Tab.0.right" timestamp="1587512371783">
+    <state width="1493" height="199" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1587515526102" />
+    <state width="1493" height="199" key="GridCell.Tab.0.left" timestamp="1587515526101">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1493" height="199" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1587512371783" />
+    <state width="1493" height="199" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1587515526101" />
+    <state width="1493" height="199" key="GridCell.Tab.0.right" timestamp="1587515526102">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="199" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1587515526102" />
   </component>
 </project>
