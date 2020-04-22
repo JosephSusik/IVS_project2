@@ -1,1 +1,9 @@
 #GitIgnore file
+
+#gitconfig file
+.gitconfig
+
+#unnnecessary gradle files
+.idea/
+.gradle/
+build/
