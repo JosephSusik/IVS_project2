@@ -4,6 +4,9 @@
 .gitconfig
 
 #unnnecessary gradle files
-.idea/
-.gradle/
-build/
+**/.idea/
+**/.gradle/
+**/build/
+
+#Doxygen output
+**/doxygen_output
