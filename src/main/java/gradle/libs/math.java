@@ -20,13 +20,15 @@ import static java.lang.Math.pow;
 
 /**
  * Class math contains mathematical methods used by the calculator
+ *
+ * @brief contains mathematical operations used by the calculator
  */
 public class math {
 
     /**
      * Addition method
      *
-     * @brief x + y
+     * @details x + y
      * @param op_1 first operand of addition
      * @param op_2 second operand of addition
      * @return result of addition, sum of operands
@@ -38,7 +40,7 @@ public class math {
     /**
      * Subtraction method
      *
-     * @brief x - y
+     * @details x - y
      * @param op_1 first operand of subtraction
      * @param op_2 second operand of subtraction
      * @return result of subtraction, difference of operands
@@ -50,7 +52,7 @@ public class math {
     /**
      * Multiplication method
      *
-     * @brief x * y
+     * @details x * y
      * @param op_1 first operand of multiplication
      * @param op_2 second operand of multiplication
      * @return result of multiplication, product of operands
@@ -62,7 +64,7 @@ public class math {
     /**
      * Division method
      *
-     * @brief x / y
+     * @details x / y
      * @param op_1 first operand of division
      * @param op_2 second operand of division
      * @return result of division, quotient of operands
@@ -78,7 +80,7 @@ public class math {
     /**
      * Factorial method
      *
-     * @brief x! = x * x-1 * x-2 * ... * 3 * 2 * 1
+     * @details x! = x * x-1 * x-2 * ... * 3 * 2 * 1
      * @param op_1 first operand of factorial function
      * @return result of factorial function
      * @throws IllegalOptionException if 'op_1' is not integer or 'op_1' is negative
@@ -99,7 +101,7 @@ public class math {
     /**
      * Power method
      *
-     * @brief x to power of y = x ^ y
+     * @details x to power of y = x ^ y
      * @param op_1 first operand of power power function (base)
      * @param op_2 second operand of power function (exponent)
      * @return result of power function
@@ -117,7 +119,7 @@ public class math {
     /**
      * Root method
      *
-     * @brief yth root of x
+     * @details yth root of x
      * @param opp_1 first operand of root function (radicand)
      * @param opp_2 second operand of root function (degree)
      * @return result of root function

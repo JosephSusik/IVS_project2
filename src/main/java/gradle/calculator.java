@@ -30,7 +30,7 @@ import static gradle.help.*;
 import static gradle.libs.math.*;
 
 /**
- * @class Main calculator class
+ * Class calculator
  *
  * @brief calculator app layout, functionality
  */

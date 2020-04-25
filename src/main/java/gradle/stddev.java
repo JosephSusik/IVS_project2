@@ -23,6 +23,8 @@ import static gradle.libs.math.*;
 
 /**
  * Class Standard deviation
+ *
+ * @brief contains method for calculating standard deviation
  */
 public class stddev {
     /**
