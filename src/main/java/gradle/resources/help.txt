@@ -1,11 +1,7 @@
 CALCULATOR HELP
 
 Application calculates and displays result of one mathematical operation. 
-Type numbers by clicking on application number buttons. Application supports decimal integer or non 
-integer numbers. Type non integer numbers by using "." button. Type negative numbers by clicking on 
-"-" before typing the number. Choose mathematical operation by clicking on one of operation buttons. 
-Display result by clicking on "=" button. Click on "CE" button to delete everything. Click on "HELP" 
-button to display help. Exit application by clicking "X" button in top right corner.
+Type numbers by clicking on application number buttons. Application supports decimal integer or non integer numbers. Type non integer numbers by using "." button. Type negative numbers by clicking on "-" before typing the number. Choose mathematical operation by clicking on one of operation buttons. Display result by clicking on "=" button. Click on "CE" button to delete everything. Click on "HELP" button to display help. Exit application by clicking "X" button in top right corner.
 
 AVAILABLE OPERATIONS
 Adding:
@@ -19,7 +15,7 @@ Division:
     -> possible error: cant divide with zero
 Factorial:
     -> type first opperand, choose "!" and click "="
-    -> possible errors: number must a positive integer
+    -> possible errors: number must be a positive integer
 Power:
     -> type first opperand (base), choose "pow", type second opperand (power) and click "="
     -> possible errors: opperands cant be zero, opperand two must be a positive integer

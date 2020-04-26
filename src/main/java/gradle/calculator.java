@@ -18,6 +18,7 @@
 package gradle;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -39,7 +40,7 @@ import static gradle.libs.math.*;
 class calculator {
     int[] calculator_size = {500, 300}; //!< calculator parameters
     int[] normal_button_size = {100, 40}; //!< normal calculator button parameters
-    int[] big_button_size = {100, 200}; //!< big calculator button parameters
+    int[] big_button_size = {100, 160}; //!< big calculator button parameters
 
     //define fonts
     Font font_big = new Font("SansSerif", Font.BOLD, 40); //!< font for main display
@@ -101,7 +102,7 @@ class calculator {
         tf_big.setText(tf_big.getText() + value);
         mTF = true;
         mEq = true;
-    }
+    } //end of numericAction method
 
     /**
      * Action to be performed for a (mathematical) operation button
@@ -111,7 +112,7 @@ class calculator {
      * @param tf_small small JTextField to write to
      */
     protected void operationAction(String value, JTextField tf_big, JTextField tf_small){
-        if (mOp.is(op.NONE)) {
+        if (mOp.is(op.NONE) && mEq) {
             ValueOne = Double.parseDouble(tf_big.getText() + "");
             switch (value) { //set corresponding flag
                 case "+":
@@ -144,7 +145,7 @@ class calculator {
             tf_big.setText(value);
             mTF = true;
         }
-    }
+    } //end of operationAction method
 
     /**
      * Action to be performed for 'factorial' button
@@ -167,7 +168,7 @@ class calculator {
             mTF = false;
             mEq = true;
         }
-    }
+    } //end of factorialAction method
 
     /**
      * Action to be performed for 'dot' button
@@ -184,7 +185,7 @@ class calculator {
             mTF = true;
             mEq = false;
         }
-    }
+    } //end of dotAction method
 
     /**
      * Action to be performed for 'equals' button
@@ -253,8 +254,8 @@ class calculator {
             mTF = false;
             mDot = false;
             mEq = true;
-        }
-    }
+        } //end of if mEq
+    } //end of equalsAction method
 
     /**
      * Method creates button with given parameters
@@ -298,30 +299,38 @@ class calculator {
                     } catch (IOException ignored) {}
                 });
             }
-        }
+        } //else
         return button;
-    }
+    } //end of createButton method
 
     /**
      * Calculator layout and functionality
      */
     public calculator() {
 
-        //try to set calculator style as system default
-        try {
-            UIManager.setLookAndFeel(
-                    UIManager.getSystemLookAndFeelClassName());
-        }
-        catch (UnsupportedLookAndFeelException | ClassNotFoundException | IllegalAccessException | InstantiationException ignored) {}
+        //try to set calculator style to system default
+	//bug: ivs ubuntu signals it cant load an essential module, but for some reason the program doesnt catch any exception
+	try {
+		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+		try {
+			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+		} catch (Exception ignored) {}
+	}
 
         //Create instance of JFrame, calculator window
         JFrame f = new JFrame("Le Calculator");
         f.pack(); //pack
         f.setIconImage(logo); //set logo
 
+	// Set calculator Jframe size
+	calculator_size[0] += f.getInsets().left + f.getInsets().right; // calculator app width
+        calculator_size[1] += f.getInsets().top + f.getInsets().bottom; // calculator app height
+	f.setSize(calculator_size[0], calculator_size[1]); // (width, height)
+
         //Create textfields, calculator display
         JTextField tf_big = new JTextField(); //Creating calculator display
-        tf_big.setBorder(javax.swing.BorderFactory.createEmptyBorder()); //without borders
+	tf_big.setBorder(javax.swing.BorderFactory.createEmptyBorder()); //without borders, doesnt seem to work on ivs ubuntu machine
         tf_big.setBounds(0,40,500,60); // (x, y, width, height)
         tf_big.setFont(font_big); //set font
         f.add(tf_big); //Adding display
@@ -357,13 +366,9 @@ class calculator {
         f.add(createButton("CE", 300,100, tf_big, tf_small));
         f.add(createButton("HELP", 400,100, tf_big, tf_small));
 
-
-        // Has to be here, otherwise loading is too slow
-        calculator_size[0] += f.getInsets().left + f.getInsets().right; // calculator app width
-        calculator_size[1] += f.getInsets().top + f.getInsets().bottom; // calculator app height
-        f.setSize(calculator_size[0], calculator_size[1]); // set calculator app size
-        f.setLayout(null); // Using no layout managers
-        f.setVisible(true); // Making the frame visible
+        // Making JFrame visible
+        f.setLayout(null);
+	f.setVisible(true); // Making the frame visible
 
         // Textfields not editable
         tf_big.setEditable(false);

@@ -32,13 +32,15 @@ public class help {
      */
     public static void show_help() throws IOException {
 
-        //try to set calculator style as system default
+	//try to set calculator style to system default
+        //bug: ivs ubuntu signals it cant load an essential module, but for some reason the program doesnt catch any exception
         try {
-            UIManager.setLookAndFeel(
-                    UIManager.getSystemLookAndFeelClassName());
-        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | IllegalAccessException | InstantiationException e) {
-            // handle exception
-        }
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+                try {
+                        UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+                } catch (Exception ignored) {}
+        }	
 
         File file = new File("./src/main/java/gradle/resources/help.txt"); //set textfile containing help information
         BufferedReader help_text = new BufferedReader(new FileReader(file)); //load help file
@@ -49,15 +51,20 @@ public class help {
         Image logo = Toolkit.getDefaultToolkit().getImage("./src/main/java/gradle/resources/logo.png"); //import logo
         f_help.setIconImage(logo); //set logo
 
+	int[] size = {600, 450};
+
         JTextArea ta = new JTextArea(); //create display for calculator help
-        ta.setBounds(0,0,570,430); // (x, y, width, height)
+        ta.setBounds(0, 0, size[0], size[1]); // (x, y, width, height)
+	ta.setFont(ta.getFont().deriveFont(10f));
+	ta.setLineWrap(true);
+        ta.setWrapStyleWord(true);
         String line;
         while ((line = help_text.readLine()) != null) //write content of help file to display
             ta.setText(ta.getText() + line + System.lineSeparator());
         help_text.close();
         f_help.add(ta); //add display
 
-        f_help.setSize((570 + f_help.getInsets().left + f_help.getInsets().right), (430 + f_help.getInsets().top + f_help.getInsets().bottom)); // (width, height)
+        f_help.setSize((size[0] + f_help.getInsets().left + f_help.getInsets().right), (size[1] + f_help.getInsets().top + f_help.getInsets().bottom)); // (width, height)
         f_help.setLayout(null); //set default layout
         f_help.setVisible(true); //make frame visible
 
@@ -66,5 +73,6 @@ public class help {
         f_help.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //when closing help window dont kill calculator
     } //end of show_help method
 } //end of help class
+
 
 /*** End of file help.java ***/
