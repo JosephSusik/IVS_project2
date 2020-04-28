@@ -10,3 +10,6 @@
 
 #Doxygen output
 **/doxygen_output
+
+#zip files
+*.zip
