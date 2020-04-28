@@ -7,9 +7,8 @@ all: build
 build:
 	../gradlew build -q -p ..
 
-#todo
-pack:
-	../gradlew pack -q
+pack: doc
+	../gradlew pack -q -p ..
 
 clean:
 	../gradlew clean -q -p ..
@@ -25,4 +24,4 @@ run: all
 
 #todo
 profile:
-	../gradlew profile -q
+	../gradlew profile -q -p ..

@@ -41,7 +41,11 @@ application {
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
+}
+
+ext {
+    zipName = "xdudaj02_xputal00_xsucha17_xsusik00.zip"
 }
 
 task doxygen() {
@@ -55,4 +59,38 @@ task doxygen() {
 
 wrapper {
     gradleVersion = '6.3'
+}
+
+task delZip(type: Delete) {
+	delete "$project.buildDir/toArchive"
+	delete zipName
+}
+
+task copy(type: Copy) {
+	dependsOn delZip
+//	org.apache.tools.ant.DirectoryScanner.removeDefaultExclude("**/.gitignore")
+//	org.apache.tools.ant.DirectoryScanner.removeDefaultExclude("**/.git/**")
+	destinationDir = project.buildDir
+	from ("$project.rootDir") {
+		exclude '**/.gradle'
+		exclude 'build'
+		exclude '.idea'
+		into 'toArchive'
+	}
+	from ("$project.rootDir/.git") {into "toArchive/.git"} 
+}
+
+task pack(type: Zip) {
+        dependsOn copy
+	destinationDirectory = project.rootDir
+        archiveName = zipName
+                
+	from ("$project.buildDir/toArchive") {
+	    exclude "doxygen_output"
+	    exclude "installer"
+	    into "repo"
+	}
+        from ("$project.buildDir/toArchive/doxygen_output") {into "doc"}
+	from ("$project.buildDir/toArchive/installer") {into "install"}
+	from ("$project.buildDir/toArchive/.git") {into "repo/.git"}
 }
