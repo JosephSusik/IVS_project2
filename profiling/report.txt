@@ -1,3 +1,0 @@
-REPORT K PROGRAMU NA VÝPOČET STANDARTNÍ SMĚRODATNÉ ODCHYLKY
-
-Vzhledem k tomu, že výpočet standardní směrodatné odchylky pro 10 čísel trval 0.169s a pro 1000 čísel trval 0.224s našim programem(viz. Profiling.zip), nenapadá nás způsob na optimalizaci programu. Program jsme testovali i pro milion čísel na vstupu a doba výpočtu byla 3.941s(viz. Profiling.zip), což je podle našeho úsudku (který ale asi není dokonalý, přece jen jsme stále studenti) vcelku přijatelný čas. V Profiling.zip se také nachází všechny data.txt soubory, které jsme použili pro profiling.
