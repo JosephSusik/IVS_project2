@@ -83,7 +83,7 @@ task copy(type: Copy) {
 task pack(type: Zip) {
         dependsOn copy
 	destinationDirectory = project.rootDir
-        archiveName = zipName
+        archiveFileName = zipName
                 
 	from ("$project.buildDir/toArchive") {
 	    exclude "doxygen_output"
