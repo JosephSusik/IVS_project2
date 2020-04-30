@@ -1,0 +1,1 @@
+Rozdíly mezi plánem a skutečností byly značné, ze začátku probíhalo vše podle plánu, ale s implementací matematické knihovny přišly problémy. Několik dní nám trvalo než se nám povedlo knihovnu rozjet ve spolupráci s kalkulačkou, takže jsme se značně opozdili. Nic méně, komunikace týmu byla dobrá, takže jsme nakonec všechno zvládli.

@@ -1,0 +1,8 @@
+
+xsusik00 100 (GUI, stddev, instalator, makefile)
+
+xdudaj02 110 (matematickou knihovnu, GUI, instalator, doxygen, mockup,makefile)
+
+xsucha17 100 (GUI, stddev, mockup)
+
+xputal00 90 (testy na matematickou knihovnu, uživaltelskou dokumentaci)
