@@ -12,11 +12,15 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application.
     id 'application'
+
+    // Apply the maven plugin to add support for Maven
+    id 'maven-publish'
 }
 
 sourceSets {
     main {
         java.srcDirs = ['src/main/java/gradle']
+	resources.srcDirs = ['src/main/java/gradle/resources']
     }
     test {
         java.srcDirs = ['src/test/java/gradle']
@@ -81,20 +85,29 @@ task copy(type: Copy) {
 		exclude '.idea'
 		into 'toArchive'
 	}
-	from ("$project.rootDir/.git") {into "toArchive/.git"} 
+	from ("$project.rootDir/.git") {into "toArchive/.git"}
 }
 
 task pack(type: Zip) {
         dependsOn copy
 	destinationDirectory = project.rootDir
         archiveFileName = zipName
-                
+	
 	from ("$project.buildDir/toArchive") {
 	    exclude "doxygen_output"
 	    exclude "installer"
 	    into "repo"
 	}
         from ("$project.buildDir/toArchive/doxygen_output") {into "doc"}
-	from ("$project.buildDir/toArchive/installer") {into "install"}
+	from ("$project.buildDir/toArchive/install") {into "install"}
 	from ("$project.buildDir/toArchive/.git") {into "repo/.git"}
 }
+
+task profile (type: Jar) {
+	include 'stddev.java'
+	include '/libs/math.java'
+	manifest.attributes(
+		'Main-Class': 'gradle.stddev.java',
+		'Class-Path': configurations.runtimeClasspath.files.collect { it.getName() }.join(' '),
+)}
+

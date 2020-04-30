@@ -22,12 +22,14 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import static gradle.help.*;
 import static gradle.libs.math.*;
 
 /**
@@ -88,6 +90,68 @@ class calculator {
 
     double ValueOne; //!< first value for calculation
     double ValueTwo; //!< second value for calculation
+
+	/**
+	 * Reads text from file and creates Jframe window for HELP to be displayed on
+	 *
+	 * @throws IOException if input file is not supplied...
+	 */
+	public static void show_help() throws IOException {
+
+		//try to set calculator style to system default
+		//bug: ivs ubuntu signals it cant load an essential module, but for some reason the program doesnt catch any exception
+		JFrame f_help = new JFrame("Le Calculator - HELP"); //create instance of JFrame, help window
+		f_help.pack(); //pack
+
+		int[] size = {600, 600};
+
+		JTextArea ta = new JTextArea(); //create display for calculator help
+		ta.setBounds(0, 0, size[0], size[1]); // (x, y, width, height)
+		ta.setFont(ta.getFont().deriveFont(10f));
+		ta.setLineWrap(true);
+		ta.setWrapStyleWord(true);
+		String text = "CALCULATOR HELP\n" +
+				"\n" +
+				"Application calculates and displays result of one mathematical operation. \n" +
+				"Type numbers by clicking on application number buttons. Application supports decimal integer or non integer numbers. Type non integer numbers by using \".\" button. Type negative numbers by clicking on \"-\" before typing the number. Choose mathematical operation by clicking on one of operation buttons. Display result by clicking on \"=\" button. Click on \"CE\" button to delete everything. Click on \"HELP\" button to display help. Exit application by clicking \"X\" button in top right corner.\n" +
+				"\n" +
+				"AVAILABLE OPERATIONS\n" +
+				"Adding:\n" +
+				"    -> type first opperand, choose \"+\", type second opperand and click \"=\"\n" +
+				"Subtitution:\n" +
+				"    -> type first opperand, choose \"-\", type second opperand and click \"=\"\n" +
+				"Multiplication:\n" +
+				"    -> type first opperand, choose \"*\", type second opperand and click \"=\"\n" +
+				"Division:\n" +
+				"    -> type first opperand, choose \"/\", type second opperand and click \"=\"\n" +
+				"    -> possible error: cant divide with zero\n" +
+				"Factorial:\n" +
+				"    -> type first opperand, choose \"!\" and click \"=\"\n" +
+				"    -> possible errors: number must be a positive integer\n" +
+				"Power:\n" +
+				"    -> type first opperand (base), choose \"pow\", type second opperand (power) and click \"=\"\n" +
+				"    -> possible errors: opperands cant be zero, opperand two must be a positive integer\n" +
+				"Root:\n" +
+				"    -> type first opperand (base), choose \"root\", type second opperand (root number) and click \"=\"\n" +
+				"    -> possible errors: root cant be zero, if root number is even - base cant be negative\n" +
+				"Logarithm:\n" +
+				"    -> type first opperand (base), choose \"log\", type second opperand (log number) and click \"=\"\n" +
+				"    -> possible errors: base cant be smaller than one, logarithm number must be positive\n" +
+				"\n" +
+				"Version 1.0\n" +
+				"Authors: xdudaj02, xputal00, xsuch17, xsusik00\n" +
+				"License: GPL\n";
+		ta.setText(text);
+		f_help.add(ta); //add display
+
+		f_help.setSize((size[0] + f_help.getInsets().left + f_help.getInsets().right), (size[1] + f_help.getInsets().top + f_help.getInsets().bottom)); // (width, height)
+		f_help.setLayout(null); //set default layout
+		f_help.setVisible(true); //make frame visible
+
+		ta.setEditable(false);// textarea not editable
+
+		f_help.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //when closing help window dont kill calculator
+	} //end of show_help method
 
     /**
      * Action to be performed for a numeric button
@@ -309,28 +373,28 @@ class calculator {
     public calculator() {
 
         //try to set calculator style to system default
-	//bug: ivs ubuntu signals it cant load an essential module, but for some reason the program doesnt catch any exception
-	try {
-		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception e) {
+		//bug: ivs ubuntu signals it cant load an essential module, but for some reason the program doesnt catch any exception
 		try {
-			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
-		} catch (Exception ignored) {}
-	}
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        	} catch (Exception e) {
+			try {
+				UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+			} catch (Exception ignored) {}
+		}
 
-        //Create instance of JFrame, calculator window
-        JFrame f = new JFrame("Le Calculator");
-        f.pack(); //pack
-        f.setIconImage(logo); //set logo
+		//Create instance of JFrame, calculator window
+		JFrame f = new JFrame("Le Calculator");
+		f.pack(); //pack
+		f.setIconImage(logo); //set logo
 
-	// Set calculator Jframe size
-	calculator_size[0] += f.getInsets().left + f.getInsets().right; // calculator app width
-        calculator_size[1] += f.getInsets().top + f.getInsets().bottom; // calculator app height
-	f.setSize(calculator_size[0], calculator_size[1]); // (width, height)
+		// Set calculator Jframe size
+		calculator_size[0] += f.getInsets().left + f.getInsets().right; // calculator app width
+		calculator_size[1] += f.getInsets().top + f.getInsets().bottom; // calculator app height
+		f.setSize(calculator_size[0], calculator_size[1]); // (width, height)
 
         //Create textfields, calculator display
         JTextField tf_big = new JTextField(); //Creating calculator display
-	tf_big.setBorder(javax.swing.BorderFactory.createEmptyBorder()); //without borders, doesnt seem to work on ivs ubuntu machine
+		tf_big.setBorder(javax.swing.BorderFactory.createEmptyBorder()); //without borders, doesnt seem to work on ivs ubuntu machine
         tf_big.setBounds(0,40,500,60); // (x, y, width, height)
         tf_big.setFont(font_big); //set font
         f.add(tf_big); //Adding display
@@ -368,7 +432,7 @@ class calculator {
 
         // Making JFrame visible
         f.setLayout(null);
-	f.setVisible(true); // Making the frame visible
+		f.setVisible(true); // Making the frame visible
 
         // Textfields not editable
         tf_big.setEditable(false);

@@ -46,7 +46,12 @@ public class stddev {
             }
         }
 
-        // number of numbers in file
+		// if vector is empty, exit
+		if (vec_tor.isEmpty()) {
+			System.exit(1);
+		}
+
+		// number of numbers in file
         int length = vec_tor.size();
 
         // Adding all numbers together

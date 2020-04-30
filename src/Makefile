@@ -1,6 +1,6 @@
 # Makefile
 
-.PHONY: all pack clean test doc run profile
+.PHONY: all build pack clean test doc run profile
 
 all: build
 
@@ -22,6 +22,5 @@ doc:
 run: all
 	../gradlew run -q -p ..
 
-#todo
 profile:
 	../gradlew profile -q -p ..

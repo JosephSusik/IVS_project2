@@ -51,7 +51,7 @@ public class help {
         Image logo = Toolkit.getDefaultToolkit().getImage("./src/main/java/gradle/resources/logo.png"); //import logo
         f_help.setIconImage(logo); //set logo
 
-	int[] size = {600, 450};
+	int[] size = {600, 480};
 
         JTextArea ta = new JTextArea(); //create display for calculator help
         ta.setBounds(0, 0, size[0], size[1]); // (x, y, width, height)
