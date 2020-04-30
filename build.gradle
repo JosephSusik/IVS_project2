@@ -99,7 +99,7 @@ task pack(type: Zip) {
 	    into "repo"
 	}
         from ("$project.buildDir/toArchive/doxygen_output") {into "doc"}
-	from ("$project.buildDir/toArchive/install") {into "install"}
+	from ("$project.buildDir/toArchive/installers") {into "install"}
 	from ("$project.buildDir/toArchive/.git") {into "repo/.git"}
 }
 
